@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الهيكل التنظيمي المطور - مؤسسة طموح</title>
+    <style>
+        :root {
+            --brand-blue: #1b1464;
+            --brand-orange: #f36f21;
+            --bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* رأس الصفحة */
+        .header {
+            background-color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            border-bottom: 4px solid var(--brand-orange);
+        }
+
+        .header img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            color: var(--brand-blue);
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 3rem 1rem;
+        }
+
+        /* القيادة العليا */
+        .ceo-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        /* خط التوصيل المركزي */
+        .ceo-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -3rem;
+            left: 50%;
+            width: 2px;
+            height: 3rem;
+            background-color: var(--brand-blue);
+        }
+
+        /* تصميم البطاقات */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid var(--brand-blue);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(27, 20, 100, 0.1);
+        }
+
+        .card.leader {
+            border-top-color: var(--brand-blue);
+            border-bottom: 4px solid var(--brand-orange);
+            width: 300px;
+            z-index: 2;
+        }
+
+        .card.deputy {
+            border-top-color: var(--brand-orange);
+            background: #fffaf7;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-title {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .role-name {
+            color: var(--brand-blue);
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+
+        .role-desc {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed #eee;
+        }
+
+        /* الأقسام (الجناحين) */
+        .divisions {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        /* خط أفقي يربط بين الأقسام */
+        .divisions::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background-color: var(--brand-blue);
+            z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+            .divisions::before { display: none; }
+            .ceo-wrapper::after { display: none; }
+        }
+
+        .division-box {
+            flex: 1;
+            min-width: 320px;
+            background: #eef1f6;
+            padding: 2rem;
+            border-radius: 16px;
+            position: relative;
+            z-index: 2;
+            border: 1px solid #e1e5ee;
+        }
+
+        /* خطوط عمودية للأقسام */
+        .division-box::before {
+            content: '';
+            position: absolute;
+            top: -3rem;
+            left: 50%;
+            width: 2px;
+            height: 3rem;
+            background-color: var(--brand-blue);
+        }
+
+        @media (max-width: 900px) {
+            .division-box::before { display: none; }
+        }
+
+        .division-title {
+            text-align: center;
+            color: var(--brand-blue);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* شبكة الفروع داخل الأقسام */
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .vacant .role-name {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="photo_2026-03-05_02-13-20 1.png" alt="شعار طموح">
+        <h1>الهيكل التنظيمي لمؤسسة طموح</h1>
+    </div>
+
+    <div class="container">
+        
+        <div class="ceo-wrapper">
+            <div class="card leader">
+                <div class="role-title">القائد العام & مسؤول العلاقات</div>
+                <div class="role-name">نوفل فندي</div>
+                <div class="role-desc">التوجيه الاستراتيجي والشراكات</div>
+            </div>
+        </div>
+
+        <div class="divisions">
+            
+            <div class="division-box">
+                <h2 class="division-title">الفروع المركزية والأساسية</h2>
+                <div class="branches-grid">
+                    <div class="card">
+                        <div class="role-title">فرع الميديا</div>
+                        <div class="role-name">بومسحل حسام</div>
+                    </div>
+                    <div class="card">
+                        <div class="role-title">الفرع التقني</div>
+                        <div class="role-name">مريان صهيب</div>
+                    </div>
+                    <div class="card">
+                        <div class="role-title">فرع الإدارة (1)</div>
+                        <div class="role-name">بشرى</div>
+                    </div>
+                    <div class="card">
+                        <div class="role-title">المتابعة والتقييم (1)</div>
+                        <div class="role-name">وسام دريدي</div>
+                        <div class="role-desc">نظام سير العمل وحضور الأعضاء</div>
+                    </div>
+                    <div class="card" style="grid-column: 1 / -1;">
+                        <div class="role-title">فريق البودكاست</div>
+                        <div class="role-name">مستقل</div>
+                        <div class="role-desc">يتبع هيكلة إدارية خاصة به</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="division-box">
+                <h2 class="division-title" style="color: var(--brand-orange);">منصة طموح للتطوع والميدان</h2>
+                
+                <div class="card deputy">
+                    <div class="role-title">نائب القائد & مسؤول التطوع</div>
+                    <div class="role-name">بوعزيز احمد رامي</div>
+                </div>
+
+                <div class="branches-grid">
+                    <div class="card">
+                        <div class="role-title">الشؤون الاجتماعية</div>
+                        <div class="role-name">نوي احمد</div>
+                        <div class="role-desc">تدقيق الملفات وتوزيع الأدوات</div>
+                    </div>
+                    <div class="card vacant">
+                        <div class="role-title">فرع الإدارة (2)</div>
+                        <div class="role-name">منصب شاغر</div>
+                        <div class="role-desc">يُحدد من قِبل مسؤول التطوع</div>
+                    </div>
+                    <div class="card" style="grid-column: 1 / -1;">
+                        <div class="role-title">المتابعة والتقييم (2)</div>
+                        <div class="role-name">بهاء مومني</div>
+                        <div class="role-desc">متابعة مخزون الكتب، المستفيدين، وعمل المتطوعين</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
